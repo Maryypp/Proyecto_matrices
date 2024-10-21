@@ -12,20 +12,7 @@ class Examen(val nombres: Array<String> = Array(4){""}) {
         }
     }
 
-    fun ToString() {
 
-        for (i in 0 until contador) {
-            calculaNota(respuestas, plantilla, notas)
-            val estados = estadoNota(notas)
-            println("Nombre: ${nombres[i]} Respuestas: ${respuestas[i].joinToString(" ")}  Notas: ${(notas[i] * 100.0).roundToInt() / 100.0} ${estados[i]}")
-        }
-        val promedio = promedioGrupo()
-        println()
-        println("Promedio del grupo: ${(promedio * 100.0).roundToInt() / 100.0}")
-        val mejor = mayorNota()
-        println("El estudiante con la mayor nota es $mejor.")
-
-    }
 
     fun calculaNota(respuestas: Array<CharArray>, plantilla: Array<Char>, notas: FloatArray) {
         for (fila in respuestas.indices) {
@@ -59,7 +46,22 @@ class Examen(val nombres: Array<String> = Array(4){""}) {
         return nombres[nombre]
     }
 
-    fun estadoNota(notas: FloatArray): Array<String> {
+
+    fun ToString() {
+
+        for (i in 0 until contador) {
+            calculaNota(respuestas, plantilla, notas)
+            val estados = mensaje(notas)
+            println("Nombre: ${nombres[i]} Respuestas: ${respuestas[i].joinToString(" ")}  Notas: ${(notas[i] * 100.0).roundToInt() / 100.0} ${estados[i]}")
+        }
+        val promedio = promedioGrupo()
+        println()
+        println("Promedio del grupo: ${(promedio * 100.0).roundToInt() / 100.0}")
+        val mejor = mayorNota()
+        println("El estudiante con la mayor nota es $mejor.")
+
+    }
+    fun mensaje(notas: FloatArray): Array<String> {
         val estados = Array(notas.size) {""}
         for (i in notas.indices) {
             estados[i] = when {

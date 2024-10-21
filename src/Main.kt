@@ -1,4 +1,4 @@
-import kotlin.math.roundToInt
+import kotlin.math.roundToInt  // para redondear numeros 
 class Examen(val nombres: Array<String> = Array(4){""}) {
     val plantilla: Array<Char> = arrayOf('a', 'c', 'b', 'a', 'd', 'b', 'b', 'c', 'a', 'a', 'b', 'd')
     var notas: FloatArray = FloatArray(4)

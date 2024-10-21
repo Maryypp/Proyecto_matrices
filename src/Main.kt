@@ -1,4 +1,4 @@
-import kotlin.math.roundToInt  // para redondear numeros 
+import kotlin.math.roundToInt  // para redondear numeros
 class Examen(val nombres: Array<String> = Array(4){""}) {
     val plantilla: Array<Char> = arrayOf('a', 'c', 'b', 'a', 'd', 'b', 'b', 'c', 'a', 'a', 'b', 'd')
     var notas: FloatArray = FloatArray(4)
@@ -47,6 +47,17 @@ class Examen(val nombres: Array<String> = Array(4){""}) {
     }
 
 
+    fun mensaje(notas: FloatArray): Array<String> {
+        val estados = Array(notas.size) {""}
+        for (i in notas.indices) {
+            estados[i] = when {
+                notas[i] >= 70.0f -> "Aprobado"
+                notas[i] < 70.0f && notas[i] >= 60.0f -> "Aplazado"
+                else -> "Reprobado"
+            }
+        }
+        return estados
+    }
     fun ToString() {
 
         for (i in 0 until contador) {
@@ -61,17 +72,7 @@ class Examen(val nombres: Array<String> = Array(4){""}) {
         println("El estudiante con la mayor nota es $mejor.")
 
     }
-    fun mensaje(notas: FloatArray): Array<String> {
-        val estados = Array(notas.size) {""}
-        for (i in notas.indices) {
-            estados[i] = when {
-                notas[i] >= 70.0f -> "Aprobado"
-                notas[i] < 70.0f && notas[i] >= 60.0f -> "Aplazado"
-                else -> "Reprobado"
-            }
-        }
-        return estados
-    }
+
 }
 
 fun main() {
